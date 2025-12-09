@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGIBIZ - Tentang Kami</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'off-white': '#F7F5F0',
+                        'black-ink': '#0F0F0F',
+                        'neon-lime': '#CCFF00',
+                        'electric-blue': '#3B46F1'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-off-white">
+
+    <!-- NAVBAR -->
+    <nav class="fixed w-full top-0 z-[100] bg-off-white/90 backdrop-blur-md border-b border-black/5">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html"
+                class="font-display font-black text-2xl tracking-tighter hover:text-electric-blue transition-colors">DIGIBIZ<span
+                    class="text-neon-lime">.</span></a>
+
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Home</a>
+                <a href="tentang.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Tentang</a>
+                <a href="services.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Layanan</a>
+                <a href="berita.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Artikel</a>
+                <a href="packages.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Paket</a>
+
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENT -->
+    <main class="pt-32 pb-20 px-6">
+
+        <!-- HERO -->
+        <div class="max-w-[1000px] mx-auto text-center mb-20">
+            <h1 class="font-display font-black text-6xl mb-6">
+                KAMI ADALAH<br>
+                <span class="text-electric-blue">PEMBERONTAK.</span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Kami tidak mengikuti tren, kami menciptakannya. Berdiri sejak 2025
+                
+            </p>
+        </div>
+
+        <!-- TEAM GRID -->
+        <div class="max-w-[1100px] mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-10">
+
+            <!-- CARD 1 -->
+            <div class="group relative rounded-[30px] overflow-hidden aspect-[4/5]">
+                <img src="Assets/img/dimqo.jpg"
+                    class="w-full h-full object-cover transition duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black to-transparent">
+                    <h3 class="text-white font-display font-bold text-2xl">Dimqo</h3>
+                    <p class="text-neon-lime font-mono text-sm">Project Manager</p>
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="group relative rounded-[30px] overflow-hidden aspect-[4/5]">
+                <img src="Assets/img/eki.jpg"
+                    class="w-full h-full object-cover transition duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black to-transparent">
+                    <h3 class="text-white font-display font-bold text-2xl">Ekii</h3>
+                    <p class="text-neon-lime font-mono text-sm">Backend Developer</p>
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="group relative rounded-[30px] overflow-hidden aspect-[4/5]">
+                <img src="Assets/img/kiting.jpg"
+                    class="w-full h-full object-cover transition duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black to-transparent">
+                    <h3 class="text-white font-display font-bold text-2xl">Rifki</h3>
+                    <p class="text-neon-lime font-mono text-sm">System Analyst</p>
+                </div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="group relative rounded-[30px] overflow-hidden aspect-[4/5]">
+                <img src="Assets/img/apri.jpg"
+                    class="w-full h-full object-cover transition duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black to-transparent">
+                    <h3 class="text-white font-display font-bold text-2xl">Apriadi</h3>
+                    <p class="text-neon-lime font-mono text-sm">UI/UX Designer</p>
+                </div>
+            </div>
+
+            <!-- CARD 5 -->
+            <div class="group relative rounded-[30px] overflow-hidden aspect-[4/5]">
+                <img src="Assets/img/wildan.jpeg"
+                    class="w-full h-full object-cover transition duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black to-transparent">
+                    <h3 class="text-white font-display font-bold text-2xl">Wildan</h3>
+                    <p class="text-neon-lime font-mono text-sm">Quality Assurance</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

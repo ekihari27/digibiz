@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGIBIZ - Daftar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'off-white': '#F7F5F0', 'black-ink': '#0F0F0F', 'neon-lime': '#CCFF00', 'hot-pink': '#FF3366' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-off-white h-screen flex overflow-hidden">
+
+    <!-- Left Side: Visual -->
+    <div class="hidden lg:flex w-1/2 bg-black items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-hot-pink opacity-20 z-10"></div>
+        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000"
+            class="absolute inset-0 w-full h-full object-cover opacity-60">
+        <div class="relative z-20 text-white text-center p-12">
+            <h2 class="font-display font-black text-6xl mb-4">JOIN THE<br>HYPE.</h2>
+            <p class="font-mono text-neon-lime">Langkah pertama menuju viralitas.</p>
+        </div>
+    </div>
+
+    <!-- Right Side: Form -->
+    <div class="w-full lg:w-1/2 flex flex-col justify-center px-8 md:px-20 relative overflow-y-auto py-10">
+        <a href="index.html" class="absolute top-8 left-8 font-display font-bold text-xl hover:text-hot-pink">&larr;
+            KEMBALI</a>
+
+        <div class="max-w-md w-full mx-auto mt-10 lg:mt-0">
+            <h1 class="font-display font-black text-4xl mb-2">BUAT AKUN</h1>
+            <p class="text-gray-500 mb-8">Isi data diri untuk memulai.</p>
+
+            <form onsubmit="event.preventDefault(); window.location.href='login.html';">
+                <div class="mb-4">
+                    <label class="block font-bold text-sm mb-2 uppercase">Nama Lengkap</label>
+                    <input type="text" required
+                        class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-black focus:outline-none"
+                        placeholder="John Doe">
+                </div>
+                <div class="mb-4">
+                    <label class="block font-bold text-sm mb-2 uppercase">Email Perusahaan</label>
+                    <input type="email" required
+                        class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-black focus:outline-none"
+                        placeholder="boss@brand.com">
+                </div>
+                <div class="mb-4">
+                    <label class="block font-bold text-sm mb-2 uppercase">Password</label>
+                    <input type="password" required
+                        class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-black focus:outline-none"
+                        placeholder="••••••••">
+                </div>
+                <div class="mb-8">
+                    <label class="block font-bold text-sm mb-2 uppercase">Konfirmasi Password</label>
+                    <input type="password" required
+                        class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-black focus:outline-none"
+                        placeholder="••••••••">
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-black text-white font-display font-bold text-xl py-4 rounded-xl hover:bg-neon-lime hover:text-black transition-colors shadow-lg">DAFTAR
+                    SEKARANG</button>
+            </form>
+
+            <p class="mt-8 text-center text-gray-600">
+                Sudah punya akun? <a href="login.html" class="font-bold text-hot-pink hover:underline">Login disini</a>
+            </p>
+        </div>
+    </div>
+
+</body>
+
+</html>

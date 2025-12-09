@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGIBIZ - Pilih Paket</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'off-white': '#F7F5F0', 'black-ink': '#0F0F0F', 'neon-lime': '#CCFF00', 'electric-blue': '#3B46F1', 'hot-pink': '#FF3366' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: var(--off-white);
+            color: #0F0F0F;
+        }
+
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .modal-scroll::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+        }
+
+        .modal-scroll::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+    </style>
+</head>
+
+<body class="bg-off-white">
+
+    <!-- NAVBAR -->
+    <nav class="fixed w-full top-0 z-[100] bg-off-white/90 backdrop-blur-md border-b border-black/5">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html"
+                class="font-display font-black text-2xl tracking-tighter hover:text-electric-blue transition-colors">DIGIBIZ<span
+                    class="text-neon-lime">.</span></a>
+
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Home</a>
+                <a href="tentang.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Tentang</a>
+                <a href="services.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Layanan</a>
+                <a href="berita.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Artikel</a>
+                <a href="packages.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Paket</a>
+
+                
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-6">
+    <div class="grid lg:grid-cols-3 gap-8 items-stretch">
+
+        <!-- Basic -->
+        <div class="pricing-card bg-white rounded-[40px] p-10 border-2 border-gray-200 flex flex-col justify-between">
+            <div>
+                <h3 class="font-display font-bold text-2xl mb-2">Basic</h3>
+                <div class="font-display font-black text-5xl mb-8 leading-none">
+                    Rp150.000<span class="text-lg text-gray-400">/bln</span>
+                </div>
+                <ul class="space-y-4 mb-10 text-gray-700 font-medium">
+                    <li>✅ Pembuatan atau optimasi akun bisnis</li>
+                    <li>✅ Publikasi 4–6 konten per bulan</li>
+                    <li>✅ Penulisan caption & penggunaan hashtag</li>
+                    <li>✅ Laporan performa sederhana</li>
+                </ul>
+            </div>
+            <button onclick="openWhatsApp('Basic','Rp150.000 / bulan')"
+                class="mt-auto w-full text-center border-2 border-black py-4 rounded-full font-bold hover:bg-black hover:text-white transition">
+                Pilih Basic
+            </button>
+        </div>
+
+        <!-- Standard / Highlight -->
+        <div
+            class="pricing-card bg-neon-lime rounded-[40px] p-10 border-2 border-neon-lime shadow-xl flex flex-col relative transform lg:-translate-y-6">
+            <div
+                class="absolute top-0 right-0 bg-black text-white text-xs font-bold px-4 py-2 rounded-bl-[20px] rounded-tr-[30px]">
+                POPULAR
+            </div>
+            <div>
+                <h3 class="font-display font-black text-3xl mb-2">Standard</h3>
+                <div class="font-display font-black text-6xl mb-8 leading-none">
+                    Rp350.000<span class="text-lg text-black/50">/bln</span>
+                </div>
+                <ul class="space-y-4 mb-10 font-bold">
+                    <li>✅ Publikasi 8–12 konten per bulan</li>
+                    <li>✅ Penambahan video pendek</li>
+                    <li>✅ Interaksi ringan (balas komentar & DM)</li>
+                    <li>✅ Laporan bulanan lebih rinci</li>
+                </ul>
+            </div>
+            <button onclick="openWhatsApp('Standard','Rp350.000 / bulan')"
+                class="mt-auto w-full bg-black text-white py-5 rounded-full font-bold hover:bg-white hover:text-black transition shadow-lg">
+                Ambil Standard!
+            </button>
+        </div>
+
+        <!-- Premium -->
+        <div class="pricing-card bg-electric-blue text-white rounded-[40px] p-10 border-2 border-electric-blue flex flex-col">
+            <div>
+                <h3 class="font-display font-bold text-2xl mb-2">Premium</h3>
+                <div class="font-display font-black text-5xl mb-8 leading-none">
+                    Rp600.000<span class="text-lg text-white/50">/bln</span>
+                </div>
+                <ul class="space-y-4 mb-10 font-medium text-white/90">
+                    <li>✅ Seluruh layanan Basic & Standard</li>
+                    <li>✅ Pembuatan 2–3 video konten</li>
+                    <li>✅ Desain materi promosi khusus</li>
+                    <li>✅ Laporan performa lebih mendalam</li>
+                </ul>
+            </div>
+            <button onclick="openWhatsApp('Premium','Rp600.000 / bulan')"
+                class="mt-auto w-full bg-white text-electric-blue py-4 rounded-full font-bold hover:bg-black hover:text-white transition">
+                Pilih Premium
+            </button>
+        </div>
+
+    </div>
+</main>
+
+    
+    <script>
+
+        function openWhatsApp(packageName, price) {
+        const phoneNumber = "6287736021141"; // Ganti dengan nomor admin
+        const message = `Halo Admin,%0ASaya tertarik memilih paket *${packageName}* dengan harga *${price}*.%0AMohon info detail selanjutnya ya.`;
+        window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+    }
+        
+
+        
+    </script>
+</body>
+
+</html>

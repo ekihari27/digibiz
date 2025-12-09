@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGIBIZ - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'off-white': '#F7F5F0', 'black-ink': '#0F0F0F', 'neon-lime': '#CCFF00', 'electric-blue': '#3B46F1' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-off-white h-screen flex overflow-hidden">
+
+    <!-- Visual Kiri -->
+    <div class="hidden lg:flex w-1/2 bg-black items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-electric-blue opacity-20 z-10"></div>
+        <img src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&q=80&w=1000"
+            class="absolute inset-0 w-full h-full object-cover opacity-60">
+        <div class="relative z-20 text-white text-center p-12">
+            <h2 class="font-display font-black text-6xl mb-4">ACCESS<br>GRANTED.</h2>
+            <p class="font-mono text-neon-lime">Masuk untuk mengelola dominasi digital Anda.</p>
+        </div>
+    </div>
+
+    <!-- Form Kanan -->
+    <div class="w-full lg:w-1/2 flex flex-col justify-center px-8 md:px-20 relative">
+        <a href="index.html"
+            class="absolute top-8 left-8 font-display font-bold text-xl hover:text-electric-blue">&larr; HOME</a>
+
+        <div class="max-w-md w-full mx-auto">
+            <h1 class="font-display font-black text-4xl mb-2">LOGIN</h1>
+            <p class="text-gray-500 mb-10">Gunakan email: <b>admin@digibiz.com</b> (Demo)</p>
+
+            <form id="loginForm">
+                <div class="mb-6">
+                    <label class="block font-bold text-sm mb-2 uppercase">Email</label>
+                    <input type="email" id="email" required
+                        class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-black focus:outline-none transition-colors"
+                        placeholder="nama@perusahaan.com">
+                </div>
+                <div class="mb-8">
+                    <label class="block font-bold text-sm mb-2 uppercase">Password</label>
+                    <input type="password" id="password" required
+                        class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-black focus:outline-none transition-colors"
+                        placeholder="••••••••">
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-black text-white font-display font-bold text-xl py-4 rounded-xl hover:bg-neon-lime hover:text-black transition-colors shadow-lg">MASUK
+                    &rarr;</button>
+            </form>
+
+            <p class="mt-8 text-center text-gray-600">
+                Belum punya akun? <a href="register.html" class="font-bold text-electric-blue hover:underline">Daftar
+                    Sekarang</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Simulasi Login Sukses
+            // Dalam real app, ini akan memanggil API Backend
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userName', 'John Doe');
+
+            const btn = this.querySelector('button');
+            btn.innerText = "MEMPROSES...";
+            btn.classList.add('opacity-50');
+
+            setTimeout(() => {
+                // Redirect ke Profile setelah login
+                window.location.href = 'profile.html';
+            }, 1000);
+        });
+    </script>
+
+</body>
+
+</html>

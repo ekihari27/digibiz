@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGIBIZ - Dashboard User</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'off-white': '#F7F5F0', 'black-ink': '#0F0F0F', 'neon-lime': '#CCFF00', 'electric-blue': '#3B46F1', 'hot-pink': '#FF3366' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .nav-item.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #CCFF00;
+            border-right: 4px solid #CCFF00;
+        }
+
+        /* MODAL STYLES */
+        .modal {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        /* Custom Scrollbar for Modal */
+        .modal-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .modal-scroll::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+        }
+
+        .modal-scroll::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 flex h-screen overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-black text-white hidden md:flex flex-col p-6 shadow-2xl z-20">
+        <a href="index.html" class="font-display font-black text-2xl tracking-tighter mb-12">DIGIBIZ<span
+                class="text-neon-lime">.</span></a>
+
+        <nav class="space-y-2 flex-1">
+            <button onclick="switchTab('dashboard')" id="nav-dashboard"
+                class="nav-item active w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors text-left">
+                <span>📊</span> <span class="font-bold text-sm uppercase tracking-wide">Ringkasan</span>
+            </button>
+            <button onclick="switchTab('packages')" id="nav-packages"
+                class="nav-item w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors text-left">
+                <span>📦</span> <span class="font-bold text-sm uppercase tracking-wide">Paket Saya</span>
+            </button>
+            <button onclick="switchTab('settings')" id="nav-settings"
+                class="nav-item w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors text-left">
+                <span>⚙️</span> <span class="font-bold text-sm uppercase tracking-wide">Pengaturan</span>
+            </button>
+        </nav>
+
+        <button onclick="openLogoutModal()"
+            class="flex items-center space-x-3 px-4 py-3 text-gray-400 hover:text-hot-pink hover:bg-white/5 rounded-lg transition-colors w-full text-left mt-auto group">
+            <span class="group-hover:rotate-12 transition-transform">🚪</span> <span
+                class="font-bold text-sm">Keluar</span>
+        </button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto p-8 md:p-12 relative">
+        <div class="md:hidden mb-8 flex justify-between items-center">
+            <a href="index.html" class="font-display font-black text-2xl tracking-tighter">DIGIBIZ<span
+                    class="text-neon-lime">.</span></a>
+            <button onclick="openLogoutModal()" class="font-bold text-hot-pink text-sm">LOGOUT</button>
+        </div>
+
+        <div class="flex justify-between items-center mb-10 border-b border-gray-200 pb-6">
+            <div>
+                <h1 class="font-display font-black text-3xl">USER PROFILE</h1>
+                <p class="text-gray-500">Kelola aktivitas digital dan paket Anda disini.</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="text-right hidden sm:block">
+                    <p class="font-bold text-black" id="userNameDisplay">John Doe</p>
+                    <p class="text-xs text-gray-500">Member sejak 2024</p>
+                </div>
+                <div
+                    class="w-12 h-12 bg-electric-blue rounded-full flex items-center justify-center text-white font-bold border-2 border-white shadow-lg">
+                    JD</div>
+            </div>
+        </div>
+
+        <!-- TAB 1: DASHBOARD STATS -->
+        <div id="dashboard" class="tab-content active">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <div
+                    class="bg-white p-6 rounded-[25px] shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <p class="text-sm font-bold text-gray-400 uppercase mb-2">Total Jangkauan</p>
+                    <div class="font-display font-black text-4xl text-black">124.5K <span
+                            class="text-green-500 text-sm font-sans align-top bg-green-100 px-2 py-1 rounded-full">+12%</span>
+                    </div>
+                </div>
+                <div
+                    class="bg-white p-6 rounded-[25px] shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <p class="text-sm font-bold text-gray-400 uppercase mb-2">Interaksi</p>
+                    <div class="font-display font-black text-4xl text-black">8.4% <span
+                            class="text-green-500 text-sm font-sans align-top bg-green-100 px-2 py-1 rounded-full">+2.1%</span>
+                    </div>
+                </div>
+                <div class="bg-black text-white p-6 rounded-[25px] shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-neon-lime blur-2xl opacity-20"></div>
+                    <p class="text-sm font-bold text-gray-400 uppercase mb-2">Sisa Kuota Iklan</p>
+                    <div class="font-display font-black text-4xl text-neon-lime">IDR 2.4jt</div>
+                    <p class="text-xs font-bold mt-2 opacity-60">Reset: 01 Des 2024</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-[30px] border border-gray-200 p-8 shadow-sm">
+                <h3 class="font-display font-bold text-xl mb-6">AKTIVITAS TERBARU</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="border-b border-gray-100 text-gray-400 text-sm uppercase">
+                                <th class="pb-4">Tanggal</th>
+                                <th class="pb-4">Aktivitas</th>
+                                <th class="pb-4">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="font-medium text-gray-700">
+                            <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors">
+                                <td class="py-4">24 Okt 2024</td>
+                                <td class="py-4">Upload Konten TikTok (Reels)</td>
+                                <td class="py-4"><span
+                                        class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">Live</span>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors">
+                                <td class="py-4">23 Okt 2024</td>
+                                <td class="py-4">Revisi Copywriting Feed #4</td>
+                                <td class="py-4"><span
+                                        class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-bold">Pending</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: MY PACKAGES -->
+        <div id="packages" class="tab-content">
+            <h3 class="font-display font-bold text-xl mb-6 uppercase tracking-wider">Paket Aktif Saat Ini</h3>
+
+            <div class="bg-neon-lime p-1 rounded-[30px] shadow-xl inline-block w-full max-w-2xl">
+                <div class="bg-black text-white rounded-[28px] p-8 relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 p-6 opacity-20 font-display font-black text-9xl leading-none -mt-4 -mr-4 text-white">
+                        GOLD</div>
+
+                    <div
+                        class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                        <div>
+                            <span
+                                class="bg-neon-lime text-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Aktif</span>
+                            <h2 class="font-display font-black text-5xl">GOLD PLAN</h2>
+                            <p class="text-gray-400 mt-2">Berlaku sampai: 24 Nov 2025</p>
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <button onclick="openPaymentMethodModal()"
+                                class="border border-white/20 hover:bg-white hover:text-black text-white px-6 py-2 rounded-full font-bold text-sm transition-colors shadow-lg">Perpanjang</button>
+                        </div>
+                    </div>
+
+                    <div class="relative z-10 grid grid-cols-2 gap-4 border-t border-white/10 pt-6">
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Konten Tersisa</p>
+                            <p class="font-display font-bold text-2xl">8 / 12</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Laporan Bulanan</p>
+                            <p class="font-display font-bold text-2xl text-neon-lime">Ready</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: SETTINGS -->
+        <div id="settings" class="tab-content">
+            <div class="max-w-xl">
+                <h3 class="font-display font-bold text-xl mb-6 uppercase tracking-wider">Edit Profil</h3>
+
+                <div class="bg-white p-8 rounded-[30px] border border-gray-200 shadow-sm">
+                    <div class="flex items-center gap-6 mb-8">
+                        <div
+                            class="w-20 h-20 bg-electric-blue rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                            JD</div>
+                    </div>
+
+                    <form onsubmit="event.preventDefault(); openAlert('Profil berhasil diperbarui!');">
+                        <div class="grid gap-6 mb-6">
+                            <div>
+                                <label class="block text-xs font-bold uppercase mb-2 text-gray-500">Nama Lengkap</label>
+                                <input type="text" value="John Doe"
+                                    class="w-full bg-gray-50 border-2 border-gray-100 rounded-xl px-4 py-3 font-bold focus:border-black outline-none transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase mb-2 text-gray-500">Email</label>
+                                <input type="email" value="john@company.com"
+                                    class="w-full bg-gray-50 border-2 border-gray-100 rounded-xl px-4 py-3 font-bold focus:border-black outline-none transition-colors">
+                            </div>
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="submit"
+                                class="bg-neon-lime text-black px-8 py-3 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-black hover:text-white transition-all">Simpan
+                                Perubahan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- LOGOUT CONFIRMATION MODAL -->
+    <div id="logoutModal"
+        class="modal fixed inset-0 z-[150] flex items-center justify-center bg-black/90 px-4 backdrop-blur-sm">
+        <div
+            class="modal-content bg-white w-full max-w-sm rounded-[30px] p-8 text-center shadow-2xl relative overflow-hidden border-4 border-black">
+            <div
+                class="w-20 h-20 bg-hot-pink text-white rounded-full flex items-center justify-center text-4xl mx-auto mb-6 border-2 border-black rotate-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                👋
+            </div>
+            <h2 class="font-display font-black text-4xl mb-2 uppercase tracking-tight">Mau Pergi?</h2>
+            <p class="font-sans font-bold text-gray-600 mb-8 leading-relaxed">
+                Sesi Anda akan berakhir. Sampai jumpa lagi, Rockstar!
+            </p>
+            <div class="flex flex-col gap-3">
+                <button onclick="performLogout()"
+                    class="w-full bg-black text-white py-4 rounded-xl font-display font-bold text-lg hover:bg-hot-pink hover:text-white transition-colors shadow-lg group">
+                    YA, KELUAR <span class="inline-block group-hover:translate-x-1 transition-transform">→</span>
+                </button>
+                <button onclick="closeLogoutModal()"
+                    class="w-full bg-transparent text-gray-400 py-3 rounded-xl font-bold text-sm hover:text-black transition-colors">
+                    BATAL
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAYMENT METHOD SELECTION MODAL -->
+    <div id="paymentMethodModal"
+        class="modal fixed inset-0 z-[160] flex items-center justify-center bg-black/80 px-4 backdrop-blur-sm">
+        <div
+            class="modal-content bg-white w-full max-w-lg rounded-[30px] overflow-hidden shadow-2xl relative h-[85vh] flex flex-col">
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
+                <div>
+                    <h2 class="font-display font-black text-2xl uppercase tracking-tight">Metode Pembayaran</h2>
+                    <p class="text-xs text-gray-500 font-bold mt-1">Total Tagihan: <span
+                            class="text-electric-blue text-lg">IDR 12.000.000</span></p>
+                </div>
+                <button onclick="closeModal('paymentMethodModal')"
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 font-bold text-gray-600 transition-colors">✕</button>
+            </div>
+
+            <!-- Body (Scrollable) -->
+            <div class="p-6 overflow-y-auto flex-1 space-y-8 modal-scroll">
+
+                <!-- QRIS Section -->
+                <div>
+                    <h3 class="font-bold text-xs uppercase text-gray-400 mb-4 tracking-wider">QR Code Standar (Instant)
+                    </h3>
+                    <label
+                        class="flex items-center gap-4 p-4 border-2 border-gray-200 rounded-2xl cursor-pointer hover:border-black transition-colors relative overflow-hidden group">
+                        <input type="radio" name="payment_method" value="qris" class="peer sr-only">
+                        <div
+                            class="w-14 h-14 bg-white border border-gray-200 rounded-xl flex items-center justify-center p-1 shadow-sm">
+                            <div class="text-center leading-none">
+                                <span class="block font-black text-xs text-red-600">QRIS</span>
+                                <span class="block text-[8px] text-gray-400">Scan All</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="font-bold text-black text-lg">QRIS</p>
+                            <p class="text-xs text-gray-500 font-medium">Scan dengan GoPay, OVO, Dana, Mobile Banking.
+                            </p>
+                        </div>
+                        <div
+                            class="absolute inset-0 border-4 border-neon-lime opacity-0 peer-checked:opacity-100 rounded-2xl pointer-events-none transition-opacity">
+                        </div>
+                        <div
+                            class="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full border-2 border-gray-300 peer-checked:bg-neon-lime peer-checked:border-black flex items-center justify-center">
+                            <div class="w-2 h-2 bg-black rounded-full opacity-0 peer-checked:opacity-100"></div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Virtual Account Section -->
+                <div>
+                    <h3 class="font-bold text-xs uppercase text-gray-400 mb-4 tracking-wider">Transfer Virtual Account
+                    </h3>
+                    <div class="grid gap-3">
+                        <!-- BCA -->
+                        <label
+                            class="flex items-center gap-4 p-4 border-2 border-gray-200 rounded-2xl cursor-pointer hover:border-black transition-colors relative group">
+                            <input type="radio" name="payment_method" value="bca" class="peer sr-only">
+                            <div
+                                class="w-14 h-10 bg-[#005EB8] text-white rounded-lg flex items-center justify-center font-bold text-sm tracking-tighter shadow-sm">
+                                BCA</div>
+                            <span class="font-bold flex-1 text-gray-700 group-hover:text-black">BCA Virtual
+                                Account</span>
+                            <div
+                                class="w-5 h-5 rounded-full border-2 border-gray-300 peer-checked:bg-neon-lime peer-checked:border-black">
+                            </div>
+                            <div
+                                class="absolute inset-0 border-2 border-black opacity-0 peer-checked:opacity-100 rounded-2xl pointer-events-none transition-opacity">
+                            </div>
+                        </label>
+                        <!-- Mandiri -->
+                        <label
+                            class="flex items-center gap-4 p-4 border-2 border-gray-200 rounded-2xl cursor-pointer hover:border-black transition-colors relative group">
+                            <input type="radio" name="payment_method" value="mandiri" class="peer sr-only">
+                            <div
+                                class="w-14 h-10 bg-[#003D79] text-[#FFB81C] rounded-lg flex items-center justify-center font-bold text-xs tracking-tighter shadow-sm">
+                                MANDIRI</div>
+                            <span class="font-bold flex-1 text-gray-700 group-hover:text-black">Mandiri Virtual
+                                Account</span>
+                            <div
+                                class="w-5 h-5 rounded-full border-2 border-gray-300 peer-checked:bg-neon-lime peer-checked:border-black">
+                            </div>
+                            <div
+                                class="absolute inset-0 border-2 border-black opacity-0 peer-checked:opacity-100 rounded-2xl pointer-events-none transition-opacity">
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- E-Wallet Section -->
+                <div>
+                    <h3 class="font-bold text-xs uppercase text-gray-400 mb-4 tracking-wider">E-Wallet / Dompet Digital
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- ShopeePay -->
+                        <label
+                            class="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-2xl cursor-pointer hover:border-black transition-colors relative group">
+                            <input type="radio" name="payment_method" value="shopeepay" class="peer sr-only">
+                            <div
+                                class="w-10 h-10 bg-[#EE4D2D] rounded-lg flex items-center justify-center text-white text-sm font-bold shadow-sm">
+                                S</div>
+                            <span class="font-bold text-sm text-gray-700 group-hover:text-black">ShopeePay</span>
+                            <div
+                                class="absolute inset-0 border-2 border-black opacity-0 peer-checked:opacity-100 rounded-2xl pointer-events-none transition-opacity">
+                            </div>
+                        </label>
+                        <!-- Dana -->
+                        <label
+                            class="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-2xl cursor-pointer hover:border-black transition-colors relative group">
+                            <input type="radio" name="payment_method" value="dana" class="peer sr-only">
+                            <div
+                                class="w-10 h-10 bg-[#118EEA] rounded-lg flex items-center justify-center text-white text-sm font-bold shadow-sm">
+                                D</div>
+                            <span class="font-bold text-sm text-gray-700 group-hover:text-black">DANA</span>
+                            <div
+                                class="absolute inset-0 border-2 border-black opacity-0 peer-checked:opacity-100 rounded-2xl pointer-events-none transition-opacity">
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="p-6 border-t border-gray-100 bg-gray-50 flex flex-col gap-3">
+                <button onclick="processSelectedPayment()"
+                    class="w-full bg-black text-white py-4 rounded-xl font-display font-bold text-lg hover:bg-neon-lime hover:text-black transition-colors shadow-lg transform active:scale-[0.98]">
+                    BAYAR SEKARANG &rarr;
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAYMENT SUCCESS MODAL -->
+    <div id="paymentSuccessModal" class="modal fixed inset-0 z-[170] flex items-center justify-center bg-black/90 px-4">
+        <div
+            class="modal-content bg-neon-lime w-full max-w-sm rounded-[30px] p-8 text-center shadow-[0_0_50px_rgba(204,255,0,0.5)] border-4 border-black">
+            <div
+                class="w-20 h-20 bg-black text-white rounded-full flex items-center justify-center text-4xl mx-auto mb-6">
+                ✓</div>
+            <h2 class="font-display font-black text-4xl mb-2">BERHASIL!</h2>
+            <p class="font-sans font-bold text-black mb-8">Pembayaran terverifikasi. Masa aktif paket diperpanjang.</p>
+            <button onclick="closeSuccessModal()"
+                class="block w-full bg-black text-white py-4 rounded-xl font-bold hover:bg-white hover:text-black transition-colors border-2 border-black">
+                KEMBALI KE DASHBOARD
+            </button>
+        </div>
+    </div>
+
+    <!-- CUSTOM ALERT MODAL (NEW) -->
+    <div id="alertModal"
+        class="modal fixed inset-0 z-[200] flex items-center justify-center bg-black/50 px-4 backdrop-blur-sm">
+        <div
+            class="modal-content bg-white w-full max-w-sm rounded-[30px] p-6 text-center shadow-2xl relative border-4 border-hot-pink">
+            <div
+                class="w-16 h-16 bg-hot-pink text-white rounded-full flex items-center justify-center text-4xl mx-auto mb-4 border-2 border-black">
+                !</div>
+            <h2 class="font-display font-black text-3xl mb-2 text-black">OOPS!</h2>
+            <p id="alertMessage" class="font-sans font-bold text-gray-600 mb-6">Silakan pilih metode pembayaran terlebih
+                dahulu!</p>
+            <button onclick="closeAlert()"
+                class="w-full bg-black text-neon-lime py-3 rounded-xl font-bold font-display uppercase tracking-wider hover:opacity-90 transition-opacity">
+                OKE, SIAP
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if (!isLoggedIn) window.location.href = 'login.html';
+            const storedName = localStorage.getItem('userName');
+            if (storedName) document.getElementById('userNameDisplay').innerText = storedName;
+        });
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            document.getElementById('nav-' + tabId).classList.add('active');
+        }
+
+        function openLogoutModal() { document.getElementById('logoutModal').classList.add('active'); }
+        function closeLogoutModal() { document.getElementById('logoutModal').classList.remove('active'); }
+        function performLogout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userName');
+            window.location.href = 'index.html';
+        }
+
+        function openPaymentMethodModal() { document.getElementById('paymentMethodModal').classList.add('active'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+
+        // Custom Alert Functions
+        function openAlert(msg) {
+            document.getElementById('alertMessage').innerText = msg;
+            document.getElementById('alertModal').classList.add('active');
+        }
+        function closeAlert() {
+            document.getElementById('alertModal').classList.remove('active');
+        }
+
+        function processSelectedPayment() {
+            const selected = document.querySelector('input[name="payment_method"]:checked');
+            if (!selected) {
+                // Gunakan Custom Alert
+                openAlert("Pilih metode pembayaran dulu, Bos!");
+                return;
+            }
+
+            const btn = document.querySelector('#paymentMethodModal button[onclick="processSelectedPayment()"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = "MEMPROSES...";
+            btn.classList.add('opacity-50', 'pointer-events-none');
+
+            setTimeout(() => {
+                closeModal('paymentMethodModal');
+                document.getElementById('paymentSuccessModal').classList.add('active');
+                btn.innerHTML = originalText;
+                btn.classList.remove('opacity-50', 'pointer-events-none');
+            }, 2000);
+        }
+
+        function closeSuccessModal() { document.getElementById('paymentSuccessModal').classList.remove('active'); }
+    </script>
+</body>
+
+</html>

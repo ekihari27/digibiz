@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGIBIZ - Artikel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'off-white': '#F7F5F0', 'black-ink': '#0F0F0F', 'neon-lime': '#CCFF00', 'electric-blue': '#3B46F1' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-off-white">
+    <nav class="fixed w-full top-0 z-[100] bg-off-white/90 backdrop-blur-md border-b border-black/5">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html"
+                class="font-display font-black text-2xl tracking-tighter hover:text-electric-blue transition-colors">DIGIBIZ<span
+                    class="text-neon-lime">.</span></a>
+
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Home</a>
+                <a href="tentang.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Tentang</a>
+                <a href="services.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Layanan</a>
+                <a href="berita.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Artikel</a>
+                <a href="packages.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Paket</a>
+
+                
+            </div>
+        </div>
+    </nav>
+    <main class="pt-40 pb-20 px-6 max-w-7xl mx-auto">
+        <h1 class="font-display font-black text-6xl mb-12 text-center">INSIGHTS.</h1>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Article Card 1 -->
+            <article
+                class="bg-white rounded-[30px] overflow-hidden border border-gray-100 hover:shadow-xl transition-shadow cursor-pointer">
+                <div class="h-48 bg-gray-200"><img
+                        src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=500"
+                        class="w-full h-full object-cover"></div>
+                <div class="p-6">
+                    <span class="text-xs font-bold text-electric-blue uppercase">Strategy</span>
+                    <h2 class="font-display font-bold text-2xl mt-2 mb-4">SEO di Tahun 2025</h2>
+                    <p class="text-gray-600 text-sm">Algoritma Google berubah lagi. Apakah keyword masih relevan?</p>
+                </div>
+            </article>
+            <!-- Article Card 2 -->
+            <article
+                class="bg-white rounded-[30px] overflow-hidden border border-gray-100 hover:shadow-xl transition-shadow cursor-pointer">
+                <div class="h-48 bg-gray-200"><img
+                        src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=500"
+                        class="w-full h-full object-cover"></div>
+                <div class="p-6">
+                    <span class="text-xs font-bold text-neon-lime bg-black px-2 py-1 rounded">Viral</span>
+                    <h2 class="font-display font-bold text-2xl mt-2 mb-4">Psikologi TikTok</h2>
+                    <p class="text-gray-600 text-sm">Cara membuat audiens berhenti scrolling dalam 3 detik pertama.</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- AUTH LOGIC SCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const authContainer = document.getElementById('authContainer');
+
+            if (isLoggedIn) {
+                // Jika user sudah login, tampilkan tombol Logout
+                authContainer.innerHTML = `
+                    <button onclick="logout()" class="font-bold text-red-500 hover:text-red-700 transition-colors uppercase text-sm tracking-wide">
+                        Logout
+                    </button>
+                `;
+            } else {
+                // Jika user belum login, tampilkan tombol Login
+                authContainer.innerHTML = `
+                    <a href="login.html" class="font-bold hover:text-electric-blue transition-colors uppercase text-sm tracking-wide">Login</a>
+                `;
+            }
+        });
+
+        function logout() {
+            if (confirm('Apakah Anda yakin ingin keluar?')) {
+                // Hapus data sesi login
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userName');
+
+                // Refresh halaman atau redirect ke home
+                window.location.reload();
+            }
+        }
+    </script>
+</body>
+
+</html>

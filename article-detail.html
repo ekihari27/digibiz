@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGIBIZ - Psikologi TikTok</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'off-white': '#F7F5F0', 'black-ink': '#0F0F0F', 'neon-lime': '#CCFF00', 'electric-blue': '#3B46F1', 'hot-pink': '#FF3366' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: var(--off-white);
+            color: #0F0F0F;
+        }
+
+        .prose p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #374151;
+            font-size: 1.125rem;
+        }
+
+        .prose h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        .prose ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .prose li {
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .highlight-box {
+            border-left: 4px solid #CCFF00;
+            padding-left: 1.5rem;
+            font-style: italic;
+            color: #000;
+            font-weight: 600;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+
+<body class="bg-off-white">
+
+    <!-- NAVBAR -->
+    <nav class="fixed w-full top-0 z-[100] bg-off-white/90 backdrop-blur-md border-b border-black/5">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html"
+                class="font-display font-black text-2xl tracking-tighter hover:text-electric-blue transition-colors">DIGIBIZ<span
+                    class="text-neon-lime">.</span></a>
+
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Home</a>
+                <a href="tentang.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Tentang</a>
+                <a href="services.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Layanan</a>
+                <a href="berita.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Artikel</a>
+                <a href="packages.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Paket</a>
+
+                
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-6">
+        <!-- Article Header -->
+        <div class="max-w-[900px] mx-auto text-center mb-10">
+            <div
+                class="flex items-center justify-center gap-3 text-sm font-bold text-gray-500 mb-6 uppercase tracking-wider">
+                <span class="bg-black text-neon-lime px-3 py-1 rounded-full">Viral Strategy</span>
+                <span>•</span>
+                <span>Okt 24, 2024</span>
+                <span>•</span>
+                <span>5 Min Read</span>
+            </div>
+            <h1 class="font-display font-black text-5xl md:text-6xl leading-[1.1] mb-8">PSIKOLOGI TIKTOK: 3 DETIK
+                PERTAMA YANG MENENTUKAN.</h1>
+            <div class="flex items-center justify-center gap-4">
+                <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200"
+                        class="w-full h-full object-cover">
+                </div>
+                <div class="text-left">
+                    <p class="font-bold text-sm">Sarah Lee</p>
+                    <p class="text-xs text-gray-500">Creative Director</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Image -->
+        <div class="max-w-[1100px] mx-auto mb-16 rounded-[40px] overflow-hidden shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=1200"
+                class="w-full h-auto object-cover max-h-[600px]">
+        </div>
+
+        <!-- Content Body -->
+        <div class="max-w-[750px] mx-auto prose">
+            <p>
+                Pernahkah Anda bertanya-tanya mengapa video TikTok tertentu mendapatkan jutaan penayangan sementara yang
+                lain tenggelam tanpa jejak? Jawabannya bukan hanya pada hashtag atau jam posting, melainkan pada
+                psikologi dasar manusia: <strong>Attention Span.</strong>
+            </p>
+            <p>
+                Di era digital yang serba cepat ini, audiens tidak lagi memiliki kesabaran. Data internal kami
+                menunjukkan bahwa 65% pengguna akan melakukan <i>swipe up</i> jika video tidak menarik perhatian mereka
+                dalam 3 detik pertama.
+            </p>
+
+            <div class="highlight-box">
+                "Jika Anda gagal memancing rasa penasaran di detik ke-2, Anda sudah kehilangan mereka selamanya."
+            </div>
+
+            <h2>Hook Visual vs Hook Verbal</h2>
+            <p>
+                Kesalahan terbesar brand adalah memulai video dengan logo intro. Ini adalah cara tercepat untuk dibunuh
+                oleh algoritma. Sebagai gantinya, gunakan pola berikut:
+            </p>
+            <ul>
+                <li><strong>Visual Disruption:</strong> Gerakan cepat atau transisi yang aneh di awal video.</li>
+                <li><strong>Statement Kontroversial:</strong> Mulai dengan kalimat yang menantang pemikiran umum.</li>
+                <li><strong>Text Overlay:</strong> Gunakan teks yang menjanjikan solusi instan.</li>
+            </ul>
+
+            <h2>Studi Kasus: Klien Beauty Brand</h2>
+            <p>
+                Bulan lalu, kami menerapkan strategi "Negative Hook" untuk salah satu klien skincare kami. Alih-alih
+                mengatakan "Produk ini bagus," kami memulai video dengan "Jangan beli serum ini jika kulitmu sudah
+                mulus."
+            </p>
+            <p>
+                Hasilnya? Retention rate di 5 detik pertama melonjak dari 20% menjadi 78%. Penjualan meningkat 3x lipat
+                dalam 24 jam. Ini membuktikan bahwa emosi (rasa penasaran dan takut ketinggalan) adalah penggerak utama
+                di platform ini.
+            </p>
+
+            <h2>Kesimpulan</h2>
+            <p>
+                Berhenti membuat konten iklan TV untuk TikTok. Mulailah berpikir seperti kreator, bukan marketer
+                korporat. Jadilah autentik, cepat, dan berani mengambil risiko.
+            </p>
+        </div>
+
+        <!-- CTA Bottom -->
+        <div
+            class="max-w-[900px] mx-auto mt-20 p-10 bg-black text-white rounded-[40px] text-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-electric-blue opacity-20"></div>
+            <div class="relative z-10">
+                <h3 class="font-display font-black text-3xl mb-4">INGIN KONTEN VIRAL SEPERTI INI?</h3>
+                <p class="text-gray-300 mb-8 max-w-lg mx-auto">Tim kami siap membantu Anda menyusun strategi konten yang
+                    dikonversi menjadi penjualan.</p>
+                <a href="packages.html"
+                    class="inline-block bg-neon-lime text-black px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform">Lihat
+                    Paket Gold &rarr;</a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-off-white border-t border-gray-200 py-12 text-center">
+        <p class="font-display font-bold text-sm text-gray-400">© 2024 DIGIBIZ AGENCY.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const authContainer = document.getElementById('authContainer');
+
+            if (isLoggedIn) {
+                authContainer.innerHTML = `<a href="profile.html" class="font-bold border border-black rounded-full px-4 py-2 hover:bg-black hover:text-white transition-colors">Akun Saya</a>`;
+            } else {
+                authContainer.innerHTML = `<a href="login.html" class="font-bold bg-black text-white rounded-full px-4 py-2 transition-colors">Login</a>`;
+            }
+        });
+    </script>
+</body>
+
+</html>

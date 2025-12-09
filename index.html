@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGIBIZ - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'off-white': '#F7F5F0', 'black-ink': '#0F0F0F', 'neon-lime': '#CCFF00', 'electric-blue': '#3B46F1', 'hot-pink': '#FF3366' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: var(--off-white);
+            color: #0F0F0F;
+        }
+
+        .tilt-card {
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+        }
+
+        @media (min-width: 1024px) {
+            .tilt-card:hover {
+                transform: rotate(0deg) scale(1.05) translateY(-10px) !important;
+                z-index: 50;
+            }
+
+            .tilt-card:nth-child(1) {
+                transform: rotate(-6deg) translateY(20px);
+            }
+
+            .tilt-card:nth-child(2) {
+                transform: rotate(4deg) translateY(-10px);
+            }
+
+            .tilt-card:nth-child(3) {
+                transform: rotate(-3deg) translateY(30px);
+            }
+
+            .tilt-card:nth-child(4) {
+                transform: rotate(5deg) translateY(0px);
+            }
+        }
+
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal-section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .article-card:hover .article-image {
+            transform: scale(1.05);
+        }
+
+        .article-card:hover .article-title {
+            color: #3B46F1;
+        }
+    </style>
+</head>
+
+<body class="bg-off-white">
+
+    <!-- NAVBAR -->
+    <nav class="fixed w-full top-0 z-[100] bg-off-white/90 backdrop-blur-md border-b border-black/5">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html"
+                class="font-display font-black text-2xl tracking-tighter hover:text-electric-blue transition-colors">DIGIBIZ<span
+                    class="text-neon-lime">.</span></a>
+
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Home</a>
+                <a href="tentang.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Tentang</a>
+                <a href="services.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Layanan</a>
+                <a href="berita.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Artikel</a>
+                <a href="packages.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Paket</a>
+
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative pt-40 pb-20 px-6 min-h-screen flex flex-col justify-center overflow-hidden">
+        <div class="max-w-7xl mx-auto w-full text-center mb-16">
+            <h1
+                class="font-display font-black text-6xl md:text-8xl leading-[0.9] tracking-tight mb-6 animate-fade-in-up">
+                ENERGI DIGITAL.<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-black">HASIL
+                    NYATA.</span>
+            </h1>
+            <p class="font-sans text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto font-medium mb-8">
+                Strategi marketing masa depan. Kami tidak sekadar membuat konten, kami menciptakan kultur.
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="packages.html"
+                    class="inline-block bg-neon-lime border-2 border-black text-black px-8 py-4 rounded-full font-bold text-lg hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all transform hover:-translate-y-1">Lihat
+                    Paket &rarr;</a>
+            </div>
+        </div>
+
+        <!-- TILT CARDS -->
+        <div class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-4 gap-4 items-start">
+
+            <div onclick="window.location.href='packages.html'"
+                class="tilt-card w-full aspect-[9/16] bg-black text-white rounded-[30px] p-6 flex flex-col justify-end shadow-xl group">
+                <h3 class="font-display font-bold text-2xl group-hover:text-neon-lime transition-colors">
+                    PROFIT<br>BOOSTER ↗</h3>
+            </div>
+            <div
+                class="tilt-card w-full aspect-[9/16] bg-electric-blue rounded-[30px] overflow-hidden shadow-xl relative">
+                <div class="absolute inset-0 bg-blue-900/20"></div>
+                <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-80">
+                    <source src="Assets/Video/adawong.mp4"
+                        type="video/mp4">
+                </video>
+            </div>
+            <div onclick="window.location.href='services.html'"
+                class="tilt-card w-full aspect-[9/16] bg-neon-lime rounded-[30px] p-6 flex flex-col justify-end shadow-xl group">
+                <h3 class="font-display font-bold text-2xl group-hover:underline">VIRAL<br>SERVICE ⚡</h3>
+            </div>
+            <div class="tilt-card w-full aspect-[9/16] bg-hot-pink rounded-[30px] overflow-hidden shadow-xl relative">
+                <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-80">
+                    <source src="Assets/Video/lfa.mp4"
+                        type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION: TENTANG -->
+    <section class="py-20 px-6 bg-[#f9f6ef] rounded-[40px] mx-4 md:mx-10 my-10">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+
+        <!-- Text -->
+        <div>
+            <p class="text-blue-600 font-semibold mb-2 tracking-wider">TENTANG KAMI</p>
+            <h2 class="font-black text-4xl md:text-5xl leading-tight mb-6">
+                BUKAN PLATFORM UMKM<br>BIASA.
+            </h2>
+            <p class="text-gray-600 mb-8">
+                Kami membantu pelaku UMKM memaksimalkan potensi digital melalui promosi kreatif,
+                branding, dan pemasaran modern. Ketahui siapa kami dan bagaimana kami mendukung perjalanan
+                bisnis UMKM lokal.
+            </p>
+
+            <a href="tentang.html" 
+                class="inline-block border border-black px-8 py-3 rounded-full font-bold hover:bg-black hover:text-white transition">
+                BACA PROFIL LENGKAP
+            </a>
+        </div>
+
+        <!-- Image with hover grayscale → color -->
+        <div class="overflow-hidden rounded-[30px]">
+            <img 
+                src="assets/img/umkm.jpg" 
+                alt="Tentang Kami"
+                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+            >
+        </div>
+
+    </div>
+</section>
+
+
+    <!-- SECTION: LAYANAN -->
+    <section class="py-24 px-6 bg-black text-white reveal-section rounded-[50px] mx-4 md:mx-10 my-10">
+  <div class="max-w-[1100px] mx-auto text-center">
+    <h2 class="font-display font-black text-5xl mb-6">UMKM Pilihan</h2>
+    <p class="mb-10 text-sm text-gray-300">Dukung pelaku usaha lokal — produk terbaik dari komunitas kami.</p>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-12">
+      <!-- UMKM 1 -->
+      <div class="p-6 border border-gray-800 rounded-[30px] hover:bg-gray-900 transition-colors flex flex-col">
+        <a href="umkm/warung-kopi.html" class="block mb-4 overflow-hidden rounded-lg">
+          <img src="/assets/umkm/warung-kopi.jpg" alt="Warung Kopi - Kopi Nusantara" class="w-full h-40 object-cover">
+        </a>
+        <h3 class="font-bold text-xl mb-1">Kopi Nusantara</h3>
+        <p class="text-sm text-gray-300 flex-1 mb-3">Roast kopi single-origin, biji lokal pilihan, layanan pesan antar.</p>
+        <div class="flex items-center justify-between text-xs text-gray-400 mb-4">
+          <span class="px-2 py-1 border border-gray-700 rounded-full">Kategori: Kuliner</span>
+          <span class="px-2 py-1 border border-gray-700 rounded-full">Lokasi: Banyumas</span>
+        </div>
+        <a href="umkm/warung-kopi.html" class="inline-block bg-white text-black px-5 py-2 rounded-full font-bold uppercase tracking-wider text-xs hover:bg-neon-lime transition-colors">Kunjungi Toko</a>
+      </div>
+
+      <!-- UMKM 2 -->
+      <div class="p-6 border border-gray-800 rounded-[30px] bg-neon-lime text-black flex flex-col">
+        <a href="umkm/desain-kreatif.html" class="block mb-4 overflow-hidden rounded-lg">
+          <img src="/assets/umkm/desain-kreatif.jpg" alt="Desain Kreatif - Cetak & Branding" class="w-full h-40 object-cover">
+        </a>
+        <h3 class="font-bold text-xl mb-1">Desain Kreatif</h3>
+        <p class="text-sm text-black flex-1 mb-3">Jasa desain & cetak, branding UMKM, packaging ramah lingkungan.</p>
+        <div class="flex items-center justify-between text-xs text-black mb-4">
+          <span class="px-2 py-1 border border-black rounded-full">Kategori: Jasa</span>
+          <span class="px-2 py-1 border border-black rounded-full">Lokasi: Purwokerto</span>
+        </div>
+        <a href="umkm/desain-kreatif.html" class="inline-block bg-black text-white px-5 py-2 rounded-full font-bold uppercase tracking-wider text-xs hover:bg-gray-800 transition-colors">Lihat Detail</a>
+      </div>
+
+      <!-- UMKM 3 -->
+      <div class="p-6 border border-gray-800 rounded-[30px] hover:bg-gray-900 transition-colors flex flex-col">
+        <a href="umkm/tenun-sari.html" class="block mb-4 overflow-hidden rounded-lg">
+          <img src="/assets/umkm/tenun-sari.jpg" alt="Tenun Sari - Produk Tenun" class="w-full h-40 object-cover">
+        </a>
+        <h3 class="font-bold text-xl mb-1">Tenun Sari</h3>
+        <p class="text-sm text-gray-300 flex-1 mb-3">Tenun tangan khas daerah, ready stock & pesanan custom.</p>
+        <div class="flex items-center justify-between text-xs text-gray-400 mb-4">
+          <span class="px-2 py-1 border border-gray-700 rounded-full">Kategori: Fashion</span>
+          <span class="px-2 py-1 border border-gray-700 rounded-full">Lokasi: Cilacap</span>
+        </div>
+        <a href="umkm/tenun-sari.html" class="inline-block bg-white text-black px-5 py-2 rounded-full font-bold uppercase tracking-wider text-xs hover:bg-neon-lime transition-colors">Lihat Produk</a>
+      </div>
+    </div>
+
+    <a href="umkm.html" class="inline-block bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-neon-lime transition-colors">Lihat Semua UMKM</a>
+  </div>
+</section>
+
+
+    <!-- SECTION: ARTIKEL TERBARU -->
+    <section class="py-24 px-6 bg-black text-white reveal-section rounded-[50px] mx-4 md:mx-10 my-10">
+    <div class="max-w-[1100px] mx-auto text-center">
+        <h2 class="font-display font-black text-5xl mb-6">Berita UMKM</h2>
+        <p class="mb-10 text-sm text-gray-300">
+            Update terbaru seputar UMKM lokal, inovasi produk, dan cerita sukses pelaku usaha.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-6">
+
+            <!-- Berita 1 -->
+            <div class="p-6 border border-gray-800 rounded-[30px] hover:bg-gray-900 transition-colors">
+                <a href="berita/launching-produk-baru.html" class="block mb-4">
+                    <img src="/assets/berita/produk-baru.jpg" class="rounded-[20px] h-48 w-full object-cover" alt="">
+                </a>
+                <h3 class="font-bold text-xl mb-2">UMKM Kuliner Luncurkan Produk Baru</h3>
+                <p class="text-gray-300 text-sm mb-4">
+                    Dapur Bu Sari merilis menu baru berbahan lokal yang langsung menarik perhatian pelanggan.
+                </p>
+                <a href="berita/launching-produk-baru.html" class="text-neon-lime font-bold text-sm underline">
+                    Baca Selengkapnya
+                </a>
+            </div>
+
+            <!-- Berita 2 -->
+            <div class="p-6 border border-gray-800 rounded-[30px] bg-neon-lime text-black">
+                <a href="berita/pelatihan-digital.html" class="block mb-4">
+                    <img src="/assets/berita/pelatihan-digital.jpg" class="rounded-[20px] h-48 w-full object-cover" alt="">
+                </a>
+                <h3 class="font-bold text-xl mb-2">Pelatihan Digital Marketing Bagi UMKM</h3>
+                <p class="text-sm mb-4">
+                    Workshop digital marketing membantu pelaku UMKM meningkatkan penjualan lewat media sosial.
+                </p>
+                <a href="berita/pelatihan-digital.html" class="font-bold text-sm underline">
+                    Baca Selengkapnya
+                </a>
+            </div>
+
+            <!-- Berita 3 -->
+            <div class="p-6 border border-gray-800 rounded-[30px] hover:bg-gray-900 transition-colors">
+                <a href="berita/kisah-sukses-tenun.html" class="block mb-4">
+                    <img src="/assets/berita/tenun.jpg" class="rounded-[20px] h-48 w-full object-cover" alt="">
+                </a>
+                <h3 class="font-bold text-xl mb-2">Kisah Sukses UMKM Tenun Mawar</h3>
+                <p class="text-gray-300 text-sm mb-4">
+                    Dari usaha rumahan menjadi brand fashion lokal yang kini dikenal hingga luar daerah.
+                </p>
+                <a href="berita/kisah-sukses-tenun.html" class="text-neon-lime font-bold text-sm underline">
+                    Baca Selengkapnya
+                </a>
+            </div>
+
+        </div>
+
+        <div class="mt-12">
+            <a href="berita.html"
+                class="inline-block bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-neon-lime transition-colors">
+                Lihat Semua Berita UMKM
+            </a>
+        </div>
+    </div>
+</section>
+
+
+    <!-- SECTION: INSTAGRAM (NEW) -->
+    <section class="py-20 px-6 text-center reveal-section">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="font-display font-bold text-2xl mb-8 uppercase tracking-widest text-gray-400">Join the Hype</h2>
+
+            <a href="https://www.instagram.com/digibizid/" target="_blank"
+                class="group inline-flex flex-col items-center gap-6 hover:scale-105 transition-transform duration-300">
+                <!-- Instagram Icon Box -->
+                <div
+                    class="w-32 h-32 bg-black text-white rounded-[30px] flex items-center justify-center group-hover:bg-hot-pink group-hover:rotate-6 transition-all duration-300 shadow-2xl relative">
+                    <div
+                        class="absolute inset-0 border-2 border-transparent group-hover:border-black rounded-[30px] transition-all">
+                    </div>
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </div>
+
+                <!-- Text Link -->
+                <a href="https://www.instagram.com/digibizid" target="_blank" rel="noopener noreferrer"
+                    class="group block">
+                        <div>
+                            <span
+                                class="font-display font-black text-4xl group-hover:text-hot-pink transition-colors">@DIGIBIZ</span>
+                            <p class="text-gray-500 font-medium mt-2 group-hover:text-black transition-colors">
+                                Daily insights & creative chaos.
+                            </p>
+                        </div>
+                    </a>
+
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-off-white border-t border-gray-200 py-12 text-center">
+        <p class="font-display font-bold text-sm text-gray-400">© 2025 DIGIBIZ.</p>
+    </footer>
+
+    <!-- LOGIC SCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            });
+            document.querySelectorAll('.reveal-section').forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+
+</html>

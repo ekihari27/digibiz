@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGIBIZ - Tentang Kami</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'off-white': '#F7F5F0',
+                        'black-ink': '#0F0F0F',
+                        'neon-lime': '#CCFF00',
+                        'electric-blue': '#3B46F1',
+                        'hot-pink': '#FF3366'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-off-white">
+
+    <!-- NAVBAR -->
+    <nav class="fixed w-full top-0 z-[100] bg-off-white/90 backdrop-blur-md border-b border-black/5">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html"
+                class="font-display font-black text-2xl tracking-tighter hover:text-electric-blue transition-colors">DIGIBIZ<span
+                    class="text-neon-lime">.</span></a>
+
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Home</a>
+                <a href="tentang.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Tentang</a>
+                <a href="services.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Layanan</a>
+                <a href="berita.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Artikel</a>
+                <a href="packages.html"
+                    class="font-display font-bold text-sm uppercase tracking-wide hover:underline decoration-2 underline-offset-4">Paket</a>
+
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER SECTION -->
+    <header class="pt-40 pb-20 px-6 text-center">
+        <h1 class="font-display font-black text-6xl md:text-7xl leading-[0.9] tracking-tight mb-6">
+            SIAPA KAMI?
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Digibiz hadir untuk mendorong UMKM agar mampu bersaing di era digital melalui pendekatan kreatif, strategi modern, dan identitas visual yang kuat.
+        </p>
+    </header>
+
+    <!-- SECTION TENTANG (dari index, versi full-page) -->
+    <section class="py-20 px-6 bg-[#f9f6ef] rounded-[40px] mx-4 md:mx-10 my-10">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+
+            <!-- Text -->
+            <div>
+                <p class="text-blue-600 font-semibold mb-2 tracking-wider">TENTANG KAMI</p>
+                <h2 class="font-black text-4xl md:text-5xl leading-tight mb-6">
+                    BUKAN PLATFORM UMKM<br>BIASA.
+                </h2>
+
+                <p class="text-gray-600 mb-6">
+                    Kami Siap Menjadi Partner Perjalanan Digital Anda
+                </p>
+
+                <p class="text-gray-600 mb-6">
+                    Sebagai platform yang baru lahir, DIGIBIZ membawa semangat untuk memperkuat UMKM sejak langkah pertama.
+                </p>
+
+                <p class="text-gray-600 mb-8">
+                    Kami siap membantu bisnis kecil hingga menengah memperkuat identitas, meningkatkan visibilitas, dan menarik lebih banyak pelanggan melalui pendekatan kreatif dan teknologi marketing modern.
+                </p>
+
+                <a href="services.html"
+                    class="inline-block border border-black px-8 py-3 rounded-full font-bold hover:bg-black hover:text-white transition">
+                    LIHAT LAYANAN
+                </a>
+            </div>
+
+            <!-- Image -->
+            <div class="overflow-hidden rounded-[30px]">
+                <img src="assets/img/umkm.jpg" alt="Tentang Kami"
+                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION MISI & VISI -->
+    <section class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12">
+
+            <div class="bg-white p-10 rounded-[30px] shadow-md">
+                <h3 class="font-display font-bold text-3xl mb-4">VISI</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Menjadi platform kreatif nomor satu yang mendorong UMKM Indonesia untuk berkembang melalui branding dan strategi digital modern.
+                </p>
+            </div>
+
+            <div class="bg-white p-10 rounded-[30px] shadow-md">
+                <h3 class="font-display font-bold text-3xl mb-4">MISI</h3>
+                <ul class="text-gray-600 space-y-3 list-disc pl-5">
+                    <li>Meningkatkan daya saing UMKM di era digital.</li>
+                    <li>Menyediakan layanan branding, desain, dan marketing yang terjangkau.</li>
+                    <li>Mendorong transformasi digital bagi UMKM di seluruh Indonesia.</li>
+                    <li>Membantu UMKM membangun identitas brand yang kuat.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-off-white border-t border-gray-200 py-12 text-center">
+        <p class="font-display font-bold text-sm text-gray-400">© 2024 DIGIBIZ AGENCY.</p>
+    </footer>
+
+</body>
+
+</html>
